@@ -24,7 +24,7 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
 .nav-item .sub-arrow { margin-left: auto; font-size: 12px; }
 
-.content { flex: 1; padding: 20px; overflow-x: hidden; max-width: 1400px; }
+.content { flex: 1; padding: 20px; overflow-x: hidden; min-width: 0; }
 .breadcrumb { font-size: 13px; color: #999; margin-bottom: 16px; }
 
 .dashboard-grid {
@@ -148,6 +148,7 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 @media (max-width: 900px) {
   .sidebar { display: none; }
   .dashboard-grid { grid-template-columns: 1fr 1fr; }
+  .content { padding: 16px; }
   .radar-card { grid-column: 1 / -1; }
   .bottom-tables { grid-template-columns: 1fr; }
 }
