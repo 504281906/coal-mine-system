@@ -314,10 +314,10 @@ function renderScoreList() {
   for (var i = 0; i < systems.length; i++) {
     var s = systems[i];
     var barClass = s.score >= 70 ? "high" : s.score >= 50 ? "mid" : "low";
-    html += "<div class="score-item">" +
-      "<span class="label">" + s.name + "</span>" +
-      "<div class="bar-wrap"><div class="pass-line"></div><div class="bar " + barClass + "" style="width:" + s.score + "%"></div></div>" +
-      "<span class="score-num " + barClass + "">" + s.score + "</span></div>";
+    html += '<div class="score-item">' +
+      '<span class="label">' + s.name + '</span>' +
+      '<div class="bar-wrap"><div class="pass-line"></div><div class="bar ' + barClass + '" style="width:' + s.score + '%"></div></div>' +
+      '<span class="score-num ' + barClass + '">' + s.score + '</span></div>';
   }
   container.innerHTML = html;
 }
@@ -329,9 +329,9 @@ function renderSubsystemList() {
   var html = "";
   for (var i = 0; i < subsystems.length; i++) {
     var s = subsystems[i];
-    html += "<div class="subsystem-item"><span class="name">" + s.name + "</span>" +
-      "<span class="status"><span class="status-dot " + statusColorMap[s.status] + ""></span>" +
-      statusMap[s.status] + "<span class="arrow">&#8250;</span></span></div>";
+    html += '<div class="subsystem-item"><span class="name">' + s.name + '</span>' +
+      '<span class="status"><span class="status-dot ' + statusColorMap[s.status] + '"></span>' +
+      statusMap[s.status] + '<span class="arrow">&#8250;</span></span></div>';
   }
   container.innerHTML = html;
 }
@@ -341,8 +341,8 @@ function renderMaintenanceTable() {
   var html = "";
   for (var i = 0; i < maintenanceData.length; i++) {
     var r = maintenanceData[i];
-    html += "<tr><td>" + r.id + "</td><td>" + r.person + "</td>" +
-      "<td><span class="blue-link">" + r.name + "</span></td><td>" + r.time + "</td></tr>";
+    html += '<tr><td>' + r.id + '</td><td>' + r.person + '</td>' +
+      '<td><span class="blue-link">' + r.name + '</span></td><td>' + r.time + '</td></tr>';
   }
   tbody.innerHTML = html;
 }
@@ -352,9 +352,9 @@ function renderEvalTable() {
   var html = "";
   for (var i = 0; i < evalReportData.length; i++) {
     var r = evalReportData[i];
-    html += "<tr><td>" + r.id + "</td><td><span class="blue-link">" + r.name + "</span></td>" +
-      "<td><span class="tag " + (r.result === "合格" ? "ok" : "warn") + "">" + r.result + "</span></td>" +
-      "<td style="font-weight:600;color:" + (r.score >= 70 ? "#1565c0" : "#c62828") + "">" + r.score + "分</td></tr>";
+    html += '<tr><td>' + r.id + '</td><td><span class="blue-link">' + r.name + '</span></td>' +
+      '<td><span class="tag ' + (r.result === "合格" ? "ok" : "warn") + '">' + r.result + '</span></td>' +
+      '<td style="font-weight:600;color:' + (r.score >= 70 ? "#1565c0" : "#c62828") + '">' + r.score + '分</td></tr>';
   }
   tbody.innerHTML = html;
 }
@@ -365,13 +365,13 @@ function renderNoticeList() {
   var iconChars = { urgent: "!", warn: "!", info: "i", normal: "·" };
   for (var i = 0; i < noticeData.length; i++) {
     var n = noticeData[i];
-    var tagHtml = n.tag ? "<span class="notice-tag " + n.tag + "">" + n.tagText + "</span>" : "";
-    html += "<div class="notice-item">" +
-      "<div class="notice-icon " + n.icon + "">" + iconChars[n.icon] + "</div>" +
-      "<div class="notice-body">" +
-        "<div class="notice-title">" + n.title + tagHtml + "</div>" +
-        "<div class="notice-meta">" + n.meta + "</div>" +
-      "</div></div>";
+    var tagHtml = n.tag ? '<span class="notice-tag ' + n.tag + '">' + n.tagText + '</span>' : '';
+    html += '<div class="notice-item">' +
+      '<div class="notice-icon ' + n.icon + '">' + iconChars[n.icon] + '</div>' +
+      '<div class="notice-body">' +
+        '<div class="notice-title">' + n.title + tagHtml + '</div>' +
+        '<div class="notice-meta">' + n.meta + '</div>' +
+      '</div></div>';
   }
   container.innerHTML = html;
 }
