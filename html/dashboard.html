@@ -27,7 +27,6 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 .content { flex: 1; padding: 20px; overflow-x: hidden; max-width: 1400px; }
 .breadcrumb { font-size: 13px; color: #999; margin-bottom: 16px; }
 
-/* 3列布局：基本概况|雷达图|快捷入口 */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 240px 1fr 240px;
@@ -39,7 +38,7 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 .card-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .card-title .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
-/* 基本概况 - 高度减半 */
+/* 基本概况 */
 .overview-card { }
 .overview-content { font-size: 12px; line-height: 1.7; }
 .overview-content p { margin-bottom: 4px; display: flex; align-items: flex-start; gap: 6px; }
@@ -50,18 +49,22 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 .overview-content .value.green { color: #388e3c; font-weight: 600; }
 
 /* 雷达图 - 中列 */
-.radar-card { display: flex; flex-direction: column; align-items: center; }
-.radar-container { position: relative; width: 100%; }
-.result-badge { position: absolute; top: 8px; left: 8px; text-align: center; background: #fff3e0; border: 2px solid #ff7043; border-radius: 10px; padding: 8px 14px; min-width: 108px; z-index: 10; }
+.radar-card { display: flex; flex-direction: column; }
+.radar-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+#radarChart { width: 100% !important; height: auto !important; max-width: 380px; }
+
+/* 评价结果 - 移至右侧 */
+.result-badge { position: absolute; top: 36px; right: 8px; text-align: center; background: #fff3e0; border: 2px solid #ff7043; border-radius: 10px; padding: 8px 16px; min-width: 116px; z-index: 10; }
 .result-badge .label { font-size: 11px; color: #c62828; margin-bottom: 2px; font-weight: 500; }
-.result-badge .score { font-size: 28px; font-weight: 800; color: #c62828; line-height: 1; }
+.result-badge .score { font-size: 30px; font-weight: 800; color: #c62828; line-height: 1; }
 .result-badge .unit { font-size: 11px; color: #c62828; font-weight: 500; }
 .result-badge.pass { background: #e8f5e9; border-color: #66bb6a; }
 .result-badge.pass .label { color: #2e7d32; }
 .result-badge.pass .score { color: #2e7d32; }
 .result-badge.pass .unit { color: #2e7d32; }
-#radarChart { width: 100% !important; height: auto !important; max-height: 250px; }
-.eval-conclusion { text-align: center; margin-top: 8px; font-size: 12px; color: #666; background: #f8f9fa; border-radius: 6px; padding: 7px 12px; border-left: 3px solid #1a73e8; }
+
+/* 文字提示 - 下移至图表下方 */
+.eval-conclusion { width: 100%; text-align: center; font-size: 12px; color: #666; background: #f8f9fa; border-radius: 6px; padding: 8px 12px; border-left: 3px solid #1a73e8; margin-top: 10px; }
 
 /* 右侧：快捷入口 + 智能化系统 */
 .right-card { display: flex; flex-direction: column; gap: 12px; }
@@ -91,7 +94,7 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
 .subsystem-item .status-dot.err { background: #e53935; }
 .subsystem-item .arrow { color: #ccc; font-size: 11px; }
 
-/* 系统评价得分 - 单独一行横跨全部列 */
+/* 系统评价得分 - 横跨全部列 */
 .score-card { grid-column: 1 / -1; }
 .score-list { display: flex; flex-direction: column; gap: 4px; }
 .score-item { display: flex; align-items: center; gap: 7px; }
@@ -187,14 +190,14 @@ body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f
       <div class="card radar-card">
         <div class="card-title"><span class="dot" style="background:#1a73e8"></span>综合评价雷达图</div>
         <div class="radar-container">
+          <canvas id="radarChart"></canvas>
+          <!-- 评价结果 - 移至右侧 -->
           <div class="result-badge fail">
             <div class="label">评价结果</div>
             <div class="score">40</div>
             <div class="unit">分 · 不合格</div>
           </div>
-          <div style="width:100%;max-width:320px;margin:0 auto;">
-            <canvas id="radarChart"></canvas>
-          </div>
+          <!-- 文字提示 - 下移至图表下方 -->
           <div class="eval-conclusion">距合格线（70分）差30分，需重点提升综采、掘进，信息基础设施等系统</div>
         </div>
       </div>
