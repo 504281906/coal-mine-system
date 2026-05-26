@@ -65,13 +65,13 @@ body {
 .content { flex: 1; padding: 20px; min-width: 0; }
 .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
 
-/* GRID: 4 equal columns, 3 rows */
+/* GRID: 4 cols x 10 rows, each 52px tall */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: repeat(10, 52px);
   gap: 14px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* CARD BASE */
@@ -81,8 +81,8 @@ body {
 .card-title { font-size: 13px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
 .card-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-/* OVERVIEW: col1 row1 span2 */
-.overview-card { grid-column: 1; grid-row: 1; min-height: unset; }
+/* OVERVIEW: col1-2, rows 1-2 */
+.overview-card { grid-column: 1 / 3; grid-row: 1 / 3; }
 .overview-stat { display: flex; flex-direction: column; gap: 11px; }
 .overview-item { display: flex; flex-direction: column; gap: 2px; }
 .overview-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
@@ -94,8 +94,8 @@ body {
 .overview-bar { height: 5px; background: #e8ecf0; border-radius: 3px; overflow: hidden; margin-top: 2px; }
 .overview-bar-fill { height: 100%; border-radius: 3px; }
 
-/* RADAR: cols 2-3 rows 1-2 (big center square) */
-.radar-card { grid-column: 2 / 4; grid-row: 1 / 3; display: flex; flex-direction: column; }
+/* RADAR: cols 3-4, rows 1-4 (taller) */
+.radar-card { grid-column: 3 / 5; grid-row: 1 / 5; }
 .radar-body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; position: relative; padding: 12px; }
 #radarChart { width: 85% !important; height: auto !important; }
 
@@ -111,15 +111,15 @@ body {
 
 .eval-conclusion { width: 100%; text-align: center; font-size: 11px; color: var(--text-muted); background: #f5f7fa; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px; border-left: 3px solid var(--accent-blue); flex-shrink: 0; }
 
-/* QUICK: col4 row1 */
-.quick-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+/* QUICK: col1-2, row3 */
+.quick-card { grid-column: 1 / 3; grid-row: 3; }
 .tile { background: #f5f7fa; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; transition: all 0.2s; }
 .tile:hover { background: var(--accent-blue-light); border-color: var(--accent-blue); transform: translateY(-2px); }
 .tile-icon { font-size: 20px; font-weight: 700; }
 .tile-label { font-size: 11px; color: var(--text-secondary); font-weight: 500; }
 
-/* SCORE: col1 row3 */
-.score-list { display: flex; flex-direction: column; gap: 7px; }
+/* SCORE: col1-2, rows 4-6 */
+.score-card { grid-column: 1 / 3; grid-row: 4 / 7; }
 .score-item { display: flex; align-items: center; gap: 8px; }
 .score-label { font-size: 11px; color: var(--text-secondary); width: 68px; flex-shrink: 0; }
 .score-bar-wrap { flex: 1; height: 5px; background: #e8ecf0; border-radius: 3px; overflow: visible; position: relative; }
@@ -133,8 +133,8 @@ body {
 .score-num.mid { color: var(--accent-amber); }
 .score-num.low { color: var(--accent-red); }
 
-/* SUBSYSTEM: col4 row3 */
-.subsystem-list { display: flex; flex-direction: column; gap: 5px; }
+/* SUBSYSTEM: col3-4, rows 5-7 */
+.subsystem-card { grid-column: 3 / 5; grid-row: 5 / 8; }
 .subsystem-item { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: #f5f7fa; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
 .subsystem-item:hover { background: var(--accent-blue-light); border-color: var(--accent-blue); }
 .subsystem-name { font-size: 11px; color: var(--text-secondary); }
@@ -148,8 +148,8 @@ body {
 .status-text.warn { color: var(--accent-amber); }
 .status-text.err { color: var(--accent-red); }
 
-/* BOTTOM 3 EQUAL */
-.bottom-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+/* BOTTOM: cols 1-4, rows 7-10 */
+.bottom-row { grid-column: 1 / -1; grid-row: 7 / 11; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .mini-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
 .mini-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 .mini-card-title { font-size: 13px; font-weight: 600; color: #1a2332; display: flex; align-items: center; gap: 8px; }
@@ -302,8 +302,8 @@ body {
         </div>
       </div>
 
-      <!-- 快捷入口: col4, row1 -->
-      <div class="card" style="grid-column:4;grid-row:1;">
+      <!-- 快捷入口: col1-2, row3 -->
+      <div class="card quick-card">
         <div class="card-header">
           <div class="card-title">
             <span class="card-dot" style="background:var(--accent-amber)"></span>
@@ -318,8 +318,8 @@ body {
         </div>
       </div>
 
-      <!-- 系统评价得分: col1, row3 -->
-      <div class="card" style="grid-column:1;grid-row:2;" class="score-card">
+      <!-- 系统评价得分: col1-2, rows 4-6 -->
+      <div class="card score-card">
         <div class="card-header">
           <div class="card-title">
             <span class="card-dot" style="background:var(--accent-red)"></span>
@@ -329,8 +329,8 @@ body {
         <div class="score-list" id="scoreList"></div>
       </div>
 
-      <!-- 智能化系统: col4, row3 -->
-      <div class="card" style="grid-column:4;grid-row:2;" class="subsystem-card">
+      <!-- 智能化系统: col3-4, rows 5-7 -->
+      <div class="card subsystem-card">
         <div class="card-header">
           <div class="card-title">
             <span class="card-dot" style="background:var(--accent-purple)"></span>
